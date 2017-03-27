@@ -19,3 +19,6 @@
 [submodule ".vim/pack/default/start/vim-vinegar"]
 	path = .vim/pack/default/start/vim-vinegar
 	url = git://github.com/tpope/vim-vinegar.git
+[submodule ".vim/pack/default/start/vim-go"]
+	path = .vim/pack/default/start/vim-go
+	url = https://github.com/fatih/vim-go.git

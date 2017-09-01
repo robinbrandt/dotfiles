@@ -25,3 +25,9 @@
 [submodule ".vim/pack/default/start/vim-fugitive"]
 	path = .vim/pack/default/start/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+[submodule ".vim/pack/default/start/asyncrun.vim"]
+	path = .vim/pack/default/start/asyncrun.vim
+	url = git@github.com:skywind3000/asyncrun.vim.git
+[submodule ".vim/pack/default/start/vim-test"]
+	path = .vim/pack/default/start/vim-test
+	url = git@github.com:janko-m/vim-test.git

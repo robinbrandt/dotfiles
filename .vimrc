@@ -28,3 +28,16 @@ fun! StripTrailingWhitespaces()
 endfun
 
 autocmd FileType ruby,json,yaml autocmd BufWritePre <buffer> :call StripTrailingWhitespaces()
+
+let test#strategy = 'asyncrun'
+
+nmap <silent> <leader>n :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>l :TestLast<CR>
+
+augroup vimrc
+  autocmd QuickFixCmdPost * botright copen 8
+augroup END
+
+set shell=/usr/local/bin/bash
+set shellcmdflag=-ic

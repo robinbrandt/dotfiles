@@ -31,3 +31,6 @@
 [submodule ".vim/pack/default/start/vim-test"]
 	path = .vim/pack/default/start/vim-test
 	url = git@github.com:janko-m/vim-test.git
+[submodule ".vim/pack/default/start/vim-surround"]
+	path = .vim/pack/default/start/vim-surround
+	url = git@github.com:tpope/vim-surround.git

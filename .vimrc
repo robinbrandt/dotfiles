@@ -29,15 +29,26 @@ endfun
 
 autocmd FileType ruby,json,yaml autocmd BufWritePre <buffer> :call StripTrailingWhitespaces()
 
-let test#strategy = 'asyncrun'
+" Running tests inside Vim 8
+function! Vim8RunStrategy(cmd)
+  "execute 'terminal bash -ic "' . a:cmd . '"'
+  if bufwinnr('!/usr/local/bin/bash') < 0
+    execute 'terminal'
+  endif
+  call term_sendkeys('!/usr/local/bin/bash', a:cmd . '')
+endfunction
+
+let g:test#custom_strategies = {'vim8terminal': function('Vim8RunStrategy')}
+let g:test#strategy = 'vim8terminal'
 
 nmap <silent> <leader>n :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>l :TestLast<CR>
 
+set shell=/usr/local/bin/bash
+set shellcmdflag=-ic
+
 augroup vimrc
   autocmd QuickFixCmdPost * botright copen 8
 augroup END
 
-set shell=/usr/local/bin/bash
-set shellcmdflag=-ic

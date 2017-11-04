@@ -52,3 +52,5 @@ augroup vimrc
   autocmd QuickFixCmdPost * botright copen 8
 augroup END
 
+" Use an up to date ruby version for syntax checker
+let g:syntastic_ruby_mri_exec='/opt/rubies/2.3.3/bin/ruby'

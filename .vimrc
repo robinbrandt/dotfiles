@@ -53,3 +53,6 @@ augroup vimrc
 augroup END
 
 let g:airline#extensions#ale#enabled = 1
+
+" use git for command-t file list
+let g:CommandTFileScanner='git'

@@ -1,0 +1,9 @@
+[alias]
+	st = status
+        ls = log --oneline
+        ll = log --oneline --decorate
+[user]
+	name = Robin Brandt
+	email = robin.brandt@shopify.com
+[core]
+	excludesfile = /Users/robinbrandt/.gitignore

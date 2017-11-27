@@ -2,6 +2,7 @@
 	st = status
         ls = log --oneline
         ll = log --oneline --decorate
+        ln = log --name-only
 [user]
 	name = Robin Brandt
 	email = robin.brandt@shopify.com

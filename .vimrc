@@ -8,12 +8,16 @@ if has("gui_macvim")
 endif
 
 set number
+set sts=2 sw=2 expandtab
 
+" Ackvim configuration
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-set sts=2 sw=2 expandtab
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep --no-heading'
+endif
 
 set nocompatible      " We're running Vim, not Vi!
 filetype on           " Enable filetype detection

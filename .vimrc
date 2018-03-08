@@ -45,9 +45,17 @@ endfunction
 let g:test#custom_strategies = {'vim8terminal': function('Vim8RunStrategy')}
 let g:test#strategy = 'vim8terminal'
 
+function! FormatBufferRubocop()
+  setlocal autoread
+  silent execute "!bin/rubocop -a %"
+  edit
+  setlocal noautoread
+endfunction
+
 nmap <silent> <leader>n :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>F :call FormatBufferRubocop()<CR>
 
 set shell=/usr/local/bin/bash
 set shellcmdflag=-ic

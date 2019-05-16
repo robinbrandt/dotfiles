@@ -37,3 +37,6 @@
 [submodule ".vim/pack/default/start/vim-rhubarb"]
 	path = .vim/pack/default/start/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb.git
+[submodule ".vim/pack/default/start/vim-graphql"]
+	path = .vim/pack/default/start/vim-graphql
+	url = https://github.com/jparise/vim-graphql.git

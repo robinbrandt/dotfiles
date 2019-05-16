@@ -68,8 +68,25 @@ augroup END
 
 let g:airline#extensions#ale#enabled = 1
 
+" don't run ALE whenever the file changes
+let g:ale_lint_on_text_changed = 'never'
+
 " use git for command-t file list
 let g:CommandTFileScanner='git'
 
-" don't run ALE whenever the file changes
-let g:ale_lint_on_text_changed = 'never'
+" switch to FZY instead of command-t for command line vim
+function! FzyCommand(choice_command, vim_command)
+  try
+    let output = system(a:choice_command . " | fzy ")
+  catch /Vim:Interrupt/
+    " Swallow errors from ^C, allow redraw! below
+  endtry
+  redraw!
+  if v:shell_error == 0 && !empty(output)
+    exec a:vim_command . ' ' . output
+  endif
+endfunction
+
+if !has("gui_macvim")
+  nmap <leader>t :call FzyCommand("git ls-files", ":e")<cr>
+endif

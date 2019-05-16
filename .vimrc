@@ -5,10 +5,14 @@ syn on
 if has("gui_macvim")
   colorscheme solarized
   set background=dark
+  set guifont=Inconsolata:h14
 endif
 
 set number
 set sts=2 sw=2 expandtab
+
+" Ruby library
+set rubydll=/usr/local/lib/libruby.dylib
 
 " Ackvim configuration
 if executable('ag')
@@ -36,10 +40,7 @@ autocmd FileType ruby,json,yaml autocmd BufWritePre <buffer> :call StripTrailing
 " Running tests inside Vim 8
 function! Vim8RunStrategy(cmd)
   "execute 'terminal bash -ic "' . a:cmd . '"'
-  if bufwinnr('!/usr/local/bin/bash') < 0
-    execute 'terminal'
-  endif
-  call term_sendkeys('!/usr/local/bin/bash', a:cmd . '')
+  call term_start(['/usr/local/bin/bash', '-ic', a:cmd])
 endfunction
 
 let g:test#custom_strategies = {'vim8terminal': function('Vim8RunStrategy')}
@@ -47,15 +48,16 @@ let g:test#strategy = 'vim8terminal'
 
 function! FormatBufferRubocop()
   setlocal autoread
-  silent execute "!bin/rubocop -a %"
+  silent execute "!bundle exec rubocop -a %"
   edit
   setlocal noautoread
 endfunction
 
-nmap <silent> <leader>n :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>l :TestLast<CR>
+nmap <leader>l :execute "silent !tmux send-keys 'rails t " . expand("%") . ":" . line(".") . "'\r"<CR>
+nmap <leader>T :execute "silent !tmux send-keys 'rails t " . expand("%") . "'\r"<CR>
 nmap <silent> <leader>F :call FormatBufferRubocop()<CR>
+
+map  :Ack 
 
 set shell=/usr/local/bin/bash
 set shellcmdflag=-ic
@@ -68,3 +70,6 @@ let g:airline#extensions#ale#enabled = 1
 
 " use git for command-t file list
 let g:CommandTFileScanner='git'
+
+" don't run ALE whenever the file changes
+let g:ale_lint_on_text_changed = 'never'

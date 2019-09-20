@@ -12,7 +12,7 @@ set number
 set sts=2 sw=2 expandtab
 
 " Ruby library
-set rubydll=/usr/local/lib/libruby.dylib
+" set rubydll=/usr/local/lib/libruby.dylib
 
 " Ackvim configuration
 if executable('ag')

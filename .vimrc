@@ -40,7 +40,13 @@ autocmd FileType ruby,json,yaml autocmd BufWritePre <buffer> :call StripTrailing
 " Running tests inside Vim 8
 function! Vim8RunStrategy(cmd)
   "execute 'terminal bash -ic "' . a:cmd . '"'
-  call term_start(['/usr/local/bin/bash', '-ic', a:cmd])
+  let term_position = get(g:, 'test#vim#term_position', 'botright')
+  execute term_position . ' new'
+  call term_start(['/usr/local/bin/bash', '-ic', a:cmd], {'curwin': 1, 'term_name': a:cmd})
+  au BufLeave <buffer> wincmd p
+  nnoremap <buffer> <Enter> :q<CR>
+  redraw
+  echo "Press <Enter> to exit test runner terminal (<Ctrl-C> first if command is still running)"
 endfunction
 
 let g:test#custom_strategies = {'vim8terminal': function('Vim8RunStrategy')}
@@ -53,8 +59,9 @@ function! FormatBufferRubocop()
   setlocal noautoread
 endfunction
 
-nmap <leader>l :execute "silent !tmux send-keys 'rails t " . expand("%") . ":" . line(".") . "'\r"<CR>
-nmap <leader>T :execute "silent !tmux send-keys 'rails t " . expand("%") . "'\r"<CR>
+nmap <leader>l :TestLast<CR>
+nmap <leader>T :TestFile<CR>
+nmap <leader>n :TestNearest<CR>
 nmap <silent> <leader>F :call FormatBufferRubocop()<CR>
 
 map  :Ack 

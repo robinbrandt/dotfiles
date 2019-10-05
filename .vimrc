@@ -65,6 +65,10 @@ nmap <leader>T :TestFile<CR>
 nmap <leader>n :TestNearest<CR>
 nmap <silent> <leader>F :call FormatBufferRubocop()<CR>
 
+nmap gs :Gstatus<CR>
+nmap gc :Gcommit<CR>
+nmap gr :Grebase origin/master
+
 map  :Ack 
 
 set shell=/usr/local/bin/bash

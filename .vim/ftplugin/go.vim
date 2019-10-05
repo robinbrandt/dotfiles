@@ -7,3 +7,5 @@ let b:ale_linters = []
 let b:ale_fixers = []
 
 nmap <leader>T <Plug>(go-test)
+
+set noet ci pi sts=0 sw=8 ts=8

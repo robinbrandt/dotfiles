@@ -10,6 +10,7 @@ endif
 
 set number
 set sts=2 sw=2 expandtab
+set vb
 
 " Ruby library
 " set rubydll=/usr/local/lib/libruby.dylib

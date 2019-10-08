@@ -69,8 +69,6 @@ nmap gs :Gstatus<CR>
 nmap gc :Gcommit<CR>
 nmap gr :Grebase origin/master
 
-map  :Ack 
-
 set shell=/usr/local/bin/bash
 set shellcmdflag=-ic
 

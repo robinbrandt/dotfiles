@@ -40,3 +40,6 @@
 [submodule ".vim/pack/default/start/vim-graphql"]
 	path = .vim/pack/default/start/vim-graphql
 	url = https://github.com/jparise/vim-graphql.git
+[submodule ".vim/pack/default/start/vim-picker"]
+	path = .vim/pack/default/start/vim-picker
+	url = https://github.com/srstevenson/vim-picker

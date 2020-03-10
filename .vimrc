@@ -8,12 +8,13 @@ if has("gui_macvim")
   set guifont=Inconsolata:h14
 endif
 
+if has("nvim")
+  hi ALEWarning ctermbg=red
+endif
+
 set number
 set sts=2 sw=2 expandtab
 set vb
-
-" Ruby library
-" set rubydll=/usr/local/lib/libruby.dylib
 
 " Ackvim configuration
 if executable('ag')
@@ -53,17 +54,9 @@ endfunction
 let g:test#custom_strategies = {'vim8terminal': function('Vim8RunStrategy')}
 let g:test#strategy = 'vim8terminal'
 
-function! FormatBufferRubocop()
-  setlocal autoread
-  silent execute "!bundle exec rubocop -a %"
-  edit
-  setlocal noautoread
-endfunction
-
 nmap <leader>l :TestLast<CR>
 nmap <leader>T :TestFile<CR>
 nmap <leader>n :TestNearest<CR>
-nmap <silent> <leader>F :call FormatBufferRubocop()<CR>
 
 nmap gs :Gstatus<CR>
 nmap gc :Gcommit<CR>
@@ -83,22 +76,7 @@ let g:ale_completion_enabled = 1
 " don't run ALE whenever the file changes
 let g:ale_lint_on_text_changed = 'never'
 
-" use git for command-t file list
-let g:CommandTFileScanner='git'
-
-" switch to FZY instead of command-t for command line vim
-function! FzyCommand(choice_command, vim_command)
-  try
-    let output = system(a:choice_command . " | fzy ")
-  catch /Vim:Interrupt/
-    " Swallow errors from ^C, allow redraw! below
-  endtry
-  redraw!
-  if v:shell_error == 0 && !empty(output)
-    exec a:vim_command . ' ' . output
-  endif
-endfunction
-
 if !has("gui_macvim")
-  nmap <leader>t :call FzyCommand("git ls-files", ":e")<cr>
+  nmap <leader>t :PickerEdit<cr>
+  nmap <leader>b :PickerBuffer<cr>
 endif

@@ -52,7 +52,7 @@ function! Vim8RunStrategy(cmd)
 endfunction
 
 let g:test#custom_strategies = {'vim8terminal': function('Vim8RunStrategy')}
-let g:test#strategy = 'vim8terminal'
+let g:test#strategy = 'neovim'
 
 nmap <leader>l :TestLast<CR>
 nmap <leader>T :TestFile<CR>

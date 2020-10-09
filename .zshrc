@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=/Users/robinbrandt/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -88,3 +88,7 @@ if [[ -f /opt/dev/dev.sh ]]; then source /opt/dev/dev.sh; fi
 
 export PATH=$PATH:~/bin
 
+if [ -e /Users/robinbrandt/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/robinbrandt/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+eval $(dircolors ~/.nix-profile/share/LS_COLORS)
+alias ls="ls --color=auto -F"

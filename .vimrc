@@ -44,7 +44,7 @@ function! Vim8RunStrategy(cmd)
   "execute 'terminal bash -ic "' . a:cmd . '"'
   let term_position = get(g:, 'test#vim#term_position', 'botright')
   execute term_position . ' new'
-  call term_start(['/usr/local/bin/bash', '-ic', a:cmd], {'curwin': 1, 'term_name': a:cmd})
+  call term_start(['/bin/bash', '-ic', a:cmd], {'curwin': 1, 'term_name': a:cmd})
   au BufLeave <buffer> wincmd p
   nnoremap <buffer> <Enter> :q<CR>
   redraw
@@ -62,7 +62,7 @@ nmap gs :Gstatus<CR>
 nmap gc :Gcommit<CR>
 nmap gr :Grebase origin/master
 
-set shell=/usr/local/bin/bash
+set shell=/bin/zsh
 set shellcmdflag=-ic
 
 augroup vimrc

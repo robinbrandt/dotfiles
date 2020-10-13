@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/robinbrandt/.oh-my-zsh
+export ZSH=/Users/robinbrandt/.nix-profile/share/oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -83,7 +83,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+[ -f ~/.nix-profile/share/autojump/autojump.zsh ] && . ~/.nix-profile/share/autojump/autojump.zsh
 if [[ -f /opt/dev/dev.sh ]]; then source /opt/dev/dev.sh; fi
 
 export PATH=$PATH:~/bin
